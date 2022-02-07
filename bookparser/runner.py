@@ -2,6 +2,7 @@ from scrapy.crawler import CrawlerProcess
 from scrapy.settings import Settings
 
 from bookparser import settings
+from bookparser.spiders.book24ru import Book24ruSpider
 from bookparser.spiders.labirintru import LabirintruSpider
 
 if __name__ == '__main__':
@@ -10,5 +11,5 @@ if __name__ == '__main__':
 
     process = CrawlerProcess(settings=crawler_settings)
     process.crawl(LabirintruSpider)
-    # process.crawl(Book24ruSpider)
+    process.crawl(Book24ruSpider)
     process.start()
