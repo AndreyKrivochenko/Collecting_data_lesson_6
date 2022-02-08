@@ -28,6 +28,6 @@ class LabirintruSpider(scrapy.Spider):
         main_price = response.xpath('//span[@class="buying-priceold-val-number"]//text()').get()
         discount_price = response.xpath('//span[@class="buying-pricenew-val-number"]//text()').get()
         rating = response.xpath('//div[@id="rate"]//text()').get()
-        _id = bson.Binary.from_uuid(uuid.uuid4())
+        _id = bson.Binary.from_uuid(uuid.uuid3(uuid.NAMESPACE_URL, url))
         yield BookparserItem(_id=_id, url=url, title=title, author=author, main_price=main_price,
                              discount_price=discount_price, rating=rating)
